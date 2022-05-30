@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dosen</title>
+    <script>
+        function hapusDosen(pesan){
+            if (confirm(pesan)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <h3>Dosen</h3>
@@ -27,7 +36,12 @@
                 <td><?php echo $dsn->nama?></td>
                 <td><?php echo $dsn->pendidikan ?></td>
                 <td>
-                    <a href="<?php echo base_url("index.php/dosen/detail/$dsn->id")?>">Detail</a>
+                    <a href="<?php echo base_url("index.php/dosen/detail/$dsn->id")?>"
+                    class="btn btn-primary btn-lg active">Detail</a>
+                    <a href= <?php echo base_url("index.php/dosen/edit/$dsn->id") ?> 
+                    class="btn btn-success btn-lg active" >Edit</a>
+                    <a href= <?php echo base_url("index.php/dosen/delete/$dsn->id") ?> 
+                    class="btn btn-danger btn-lg active" onclick="return hapusDosen('Anda yakin ingin menghapus dosen yang bernama <?php echo $dsn->nama?> ?')" >Hapus</a>
                 </td>
             </tr>
 
@@ -37,5 +51,7 @@
             ?>
         </tbody>
     </table>
+    <a href= <?php echo base_url("index.php/dosen/form") ?> class="btn btn-primary btn-lg active" >Tambah</a> 
+    </div>
 </body>
 </html>

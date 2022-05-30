@@ -13,6 +13,21 @@ class Dosen_model extends CI_Model{
         $query = $this->db->get_where('dosen', ['id' => $id]);
         return $query->row();
     }
+    public function simpan($data){
+        $sql= "INSERT INTO dosen (nama,gender,tmp_lahir,tgl_lahir,nidn,pendidikan) VALUES (?,?,?,?,?,?)";
 
+        $this->db->query($sql, $data);
+        $insert_id = $this->db->insert_id();
+        return $this->getByI($insert_id);
+    }
+    public function update($data){
+        $sql = "UPDATE dosen SET nama=?,gender=?,tmp_lahir=?,tgl_lahir=?,nidn=?,pendidikan=?, WHERE id=?";
+        $this->db->query($sql,$data);
+    }
+    public function delete($data){
+        // hapus data mahasiswa
+        $sql = "DELETE FROM dosen WHERE id=?";
+        $this->db->query($sql,$data);
+    }
 }
 ?>
