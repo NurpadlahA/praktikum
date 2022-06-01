@@ -15,8 +15,14 @@
         }
     </script>
 </head>
+<?php
+$username = $this->session->userdata('username');
+if ($username) {
+    echo "<h2>Selamat Datang $username</h2> ";
+}
+?>
 <body>
-    <h3>Matakuliah</h3>
+<h4 style="text-align: center;" >Matakuliah</h4>
     <table border="1" class="table">
         <thead>
             <tr>
